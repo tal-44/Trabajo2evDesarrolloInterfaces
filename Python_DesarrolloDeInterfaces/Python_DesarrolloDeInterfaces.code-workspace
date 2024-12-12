@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+        "python.defaultInterpreterPath": "C:\\Users\\juanm_ccji0p9\\Cosas\\DAM\\Segundo\\Modulos\\Desarrollo de interfaces\\Python_DesarrolloDeInterfaces\\EntornoVirtualPythonDesarrolloDeInterfaces\\Scripts\\python.exe",
+        "python.terminal.activateEnvironment": true,
+        "python.formatting.provider": "black",
+        "editor.formatOnSave": true
+    }
+}
