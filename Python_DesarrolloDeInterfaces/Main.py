@@ -24,27 +24,75 @@ class Main(QMainWindow):
         
         """
         
-        """        
-        self.conexion = sqlite3.connect("BBDDTrabajadoresYReloj.db")
-        self.cursor = self.conexion.cursor()
+        """       
+        from DAO import Conexion  # Assuming Conexion is defined in Fichaje module
+        
+        conexion = Conexion().get_connection()
+        self.cursor = conexion.cursor()
         
         print(self.cursor.execute("SELECT * FROM Trabajador"))
         
-        self.conexion.commit()
+        conexion.commit()
         
         self.cursor.close()
-        self.conexion.close()
+        Conexion.close_connection(conexion)
         """        
         
+        super(Main, self).__init__()
         super().__init__(parent)
         loadUi("mainWindow.ui", self)
         
-        self.update_label()
+        self.mostrarInfo("sin mensajes")
+        self.mostrarPanelFichar()
+        
+        self.btn_Fichar.clicked.connect(self.mostrarPanelFichar)
+        self.btn_Imprimir.clicked.connect(self.mostrarPanelImprimir)
+        
+        self.btn_EmitirFichaje.clicked.connect(self.emitirFichaje)
 
         
-    def mostrarInfo(self):
-        self.lblMensajes.setText()
-        self.lblMensajes.show()
+    def mostrarInfo(self, mensaje):
+        
+        self.textEdit_PanelMensajes.setText(mensaje)
+        self.textEdit_PanelMensajes.show()
+        
+    def mostrarPanelFichar(self):
+        
+        self.stackedWidget.setCurrentIndex(1)
+        
+        self.update_label()
+        
+    def mostrarPanelImprimir(self):        
+        self.stackedWidget.setCurrentIndex(0)
+        
+    def emitirFichaje(self):
+        
+        codigo = self.textEdit_TeclearCodigo.toPlainText()
+        
+        if codigo == "":
+            self.mostrarInfo("Introduzca un codigo")
+            return
+        
+        try:
+            
+            conexion = Conexion.get_connection()
+            cursor = conexion.cursor()
+            
+            query = 'SELECT * FROM trabajador WHERE idtr = ?'          ***  
+            parametro = codigo
+            
+            cursor.execute(query, (parametro,))
+            
+            self.textEdit_PanelMensajes.setText("Fichaje realizado")
+            
+            conexion.commit()
+        
+        except sqlite3.Error as e:
+            print(e)
+                        
+        finally:
+            Conexion.close_connection(conexion)
+
         
     def update_label(self):
         """
