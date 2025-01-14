@@ -6,8 +6,8 @@ class Conexion:
     Conexion con la base de datos de DB Browser SQLite
     """
     
-    __db__path = "C:\Users\juanm_ccji0p9\repos-git\Trabajo2evDesarrolloInterfaces\Python_DesarrolloDeInterfaces\BBDDTrabajadoresYReloj.db"
-    
+    __db__path = r'C:\Users\juanm_ccji0p9\repos-git\Trabajo2evDesarrolloInterfaces\Python_DesarrolloDeInterfaces\BBDDTrabajadoresYReloj.db'
+        
     def get_connection(self):
         """
         Devuelve una conexion con la base de datos

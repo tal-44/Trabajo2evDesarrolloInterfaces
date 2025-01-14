@@ -4,6 +4,8 @@ import time
 from Fichaje import *
 from Trabajador import *
 """
+from DAO import Conexion
+
 import sqlite3
 import io
 from io import *
@@ -75,13 +77,31 @@ class Main(QMainWindow):
         
         try:
             
-            conexion = Conexion.get_connection()
+            conexion = Conexion().get_connection()
             cursor = conexion.cursor()
+                        
+            query = 'SELECT Estado, Nombre FROM Trabajador WHERE idtr = ?'
             
-            query = 'SELECT * FROM trabajador WHERE idtr = ?'          ***  
-            parametro = codigo
+            cursor.execute(query, (codigo,))
+            estadoYNombre = cursor.fetchone()
             
-            cursor.execute(query, (parametro,))
+            estadoYNombre = list(estadoYNombre)
+            
+            if estadoYNombre is None:
+                self.textEdit_PanelMensajes.setText("Codigo no valido")
+                return
+            elif estadoYNombre[0] == 'IN':
+                estadoYNombre[0] = 'OUT'
+            else:
+                estadoYNombre[0] = 'IN'
+                
+            query = 'UPDATE Trabajador SET Estado = ? WHERE idtr = ?'
+            
+            cursor.execute(query, (estadoYNombre[0], codigo,))
+            
+            query = 'INSERT INTO Reloj (idtr, nombre, fecha, hora, estado) VALUES (?, ?, ?, ?, ?)'
+            
+            cursor.execute(query, (codigo, estadoYNombre[1], QDate.currentDate().toString(), QTime.currentTime().toString(), estadoYNombre[0]))
             
             self.textEdit_PanelMensajes.setText("Fichaje realizado")
             
@@ -91,7 +111,7 @@ class Main(QMainWindow):
             print(e)
                         
         finally:
-            Conexion.close_connection(conexion)
+            Conexion().close_connection(conexion)
 
         
     def update_label(self):
