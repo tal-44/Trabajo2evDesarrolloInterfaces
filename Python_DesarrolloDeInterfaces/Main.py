@@ -4,7 +4,7 @@ import time
 from Fichaje import *
 from Trabajador import *
 """
-from DAO import Conexion
+from DAO.Conexion import Conexion
 
 import sqlite3
 import io
@@ -71,39 +71,49 @@ class Main(QMainWindow):
         
         codigo = self.textEdit_TeclearCodigo.toPlainText()
         
+        
+        
         if codigo == "":
             self.mostrarInfo("Introduzca un codigo")
             return
         
         try:
             
+            
             conexion = Conexion().get_connection()
+                       
             cursor = conexion.cursor()
                         
-            query = 'SELECT Estado, Nombre FROM Trabajador WHERE idtr = ?'
+            query = 'SELECT Estado FROM Trabajador WHERE idtr = ?'
             
             cursor.execute(query, (codigo,))
-            estadoYNombre = cursor.fetchone()
+            estado = cursor.fetchone()
+            estado = estado[0]
             
-            estadoYNombre = list(estadoYNombre)
-            
-            if estadoYNombre is None:
+            if estado is None:
                 self.textEdit_PanelMensajes.setText("Codigo no valido")
                 return
-            elif estadoYNombre[0] == 'IN':
-                estadoYNombre[0] = 'OUT'
+            elif estado == 'IN':
+                estado = 'OUT'
             else:
-                estadoYNombre[0] = 'IN'
+                estado = 'IN'
                 
             query = 'UPDATE Trabajador SET Estado = ? WHERE idtr = ?'
             
-            cursor.execute(query, (estadoYNombre[0], codigo,))
+            cursor.execute(query, (estado, codigo,))
+                        
+            query = 'SELECT Nombre FROM Trabajador WHERE idtr = ?'
+            
+            cursor.execute(query, (codigo,))
+            nombre = cursor.fetchone()[0]
             
             query = 'INSERT INTO Reloj (idtr, nombre, fecha, hora, estado) VALUES (?, ?, ?, ?, ?)'
             
-            cursor.execute(query, (codigo, estadoYNombre[1], QDate.currentDate().toString(), QTime.currentTime().toString(), estadoYNombre[0]))
+            cursor.execute(query, (codigo, nombre, QDate.currentDate().toString(), QTime.currentTime().toString(), estado))
             
             self.textEdit_PanelMensajes.setText("Fichaje realizado")
+            
+            cursor.close()
             
             conexion.commit()
         
@@ -127,7 +137,7 @@ class Main(QMainWindow):
         
         timer = QTimer(self)
         timer.timeout.connect(self.update_label)
-        timer.start(1000)
+        timer.singleShot(1000, self.update_label)
     
     
 if __name__ == "__main__":    
