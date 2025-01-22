@@ -64,6 +64,19 @@ font-size: 20px;
       <string>fichar</string>
      </property>
     </widget>
+    <widget class="QListWidget" name="listWidget_Trabajadores">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>220</y>
+       <width>249</width>
+       <height>201</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:rgb(255, 255, 255);</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="widgetAbajo" native="true">
     <property name="geometry">
@@ -197,7 +210,7 @@ font-size: 30px;</string>
         <x>70</x>
         <y>220</y>
         <width>251</width>
-        <height>151</height>
+        <height>218</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -212,7 +225,7 @@ font-size: 30px;</string>
         </widget>
        </item>
        <item>
-        <widget class="QListView" name="listView_EstadoTrabajadores">
+        <widget class="QListView" name="listView_Trabajadores">
          <property name="styleSheet">
           <string notr="true">background-color:rgb(255, 255, 255);</string>
          </property>

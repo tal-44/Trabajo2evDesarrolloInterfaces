@@ -16,9 +16,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractButton, QApplication, QDateEdit, QDialogButtonBox,
-    QHBoxLayout, QLabel, QListView, QMainWindow,
-    QPushButton, QSizePolicy, QStackedWidget, QTextEdit,
-    QVBoxLayout, QWidget)
+    QHBoxLayout, QLabel, QListView, QListWidget,
+    QListWidgetItem, QMainWindow, QPushButton, QSizePolicy,
+    QStackedWidget, QTextEdit, QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -43,6 +43,10 @@ class Ui_MainWindow(object):
         self.btn_Fichar.setStyleSheet(u"background-color:rgb(180, 180, 180);\n"
 "font-size: 20px;\n"
 "")
+        self.listWidget_Trabajadores = QListWidget(self.widgetIzquierda)
+        self.listWidget_Trabajadores.setObjectName(u"listWidget_Trabajadores")
+        self.listWidget_Trabajadores.setGeometry(QRect(10, 220, 249, 201))
+        self.listWidget_Trabajadores.setStyleSheet(u"background-color:rgb(255, 255, 255);")
         self.widgetAbajo = QWidget(self.centralwidget)
         self.widgetAbajo.setObjectName(u"widgetAbajo")
         self.widgetAbajo.setGeometry(QRect(189, 419, 621, 161))
@@ -110,7 +114,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayoutWidget_3 = QWidget(self.page_1)
         self.verticalLayoutWidget_3.setObjectName(u"verticalLayoutWidget_3")
-        self.verticalLayoutWidget_3.setGeometry(QRect(70, 220, 251, 151))
+        self.verticalLayoutWidget_3.setGeometry(QRect(70, 220, 251, 218))
         self.verticalLayout_3 = QVBoxLayout(self.verticalLayoutWidget_3)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
@@ -120,11 +124,11 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_3.addWidget(self.label_6)
 
-        self.listView_EstadoTrabajadores = QListView(self.verticalLayoutWidget_3)
-        self.listView_EstadoTrabajadores.setObjectName(u"listView_EstadoTrabajadores")
-        self.listView_EstadoTrabajadores.setStyleSheet(u"background-color:rgb(255, 255, 255);")
+        self.listView_Trabajadores = QListView(self.verticalLayoutWidget_3)
+        self.listView_Trabajadores.setObjectName(u"listView_Trabajadores")
+        self.listView_Trabajadores.setStyleSheet(u"background-color:rgb(255, 255, 255);")
 
-        self.verticalLayout_3.addWidget(self.listView_EstadoTrabajadores)
+        self.verticalLayout_3.addWidget(self.listView_Trabajadores)
 
         self.pushButtonImprimir = QPushButton(self.page_1)
         self.pushButtonImprimir.setObjectName(u"pushButtonImprimir")

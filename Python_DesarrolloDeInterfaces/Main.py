@@ -1,5 +1,4 @@
 from datetime import *
-import time
 """
 from Fichaje import *
 from Trabajador import *
@@ -7,12 +6,11 @@ from Trabajador import *
 from DAO.Conexion import Conexion
 
 import sqlite3
-import io
 from io import *
 import sys
 from PyQt6.QtWidgets import QApplication, QMainWindow, QHeaderView
 from PyQt6.QtCore import QPropertyAnimation, QEasingCurve
-from PyQt6 import QtCore, QtWidgets
+from PyQt6 import QtCore, QtWidgets, QtGui
 from PyQt6.uic import loadUi
 from PyQt6.QtCore import Qt, QTimer, QTime, QDate, pyqtSlot
 import logging
@@ -78,8 +76,41 @@ class Main(QMainWindow):
         self.btn_Imprimir.hide()
         self.buttonBox.hide()
         
-        self.update_label()
         self.update_label_panelMensajes()
+        self.mostrarListaTrabajadores()
+        
+    def mostrarListaTrabajadores(self):
+        
+        try:
+            conexion = Conexion().get_connection()            
+            cursor = conexion.cursor() 
+            
+            query = 'SELECT Nombre FROM Trabajador'
+            
+            cursor.execute(query)
+            
+            nombres = cursor.fetchall()
+            
+            model = QtGui.QStandardItemModel()
+            for nombre in nombres:
+                item = QtGui.QStandardItem(nombre[0])
+                model.appendRow(item)
+            self.listView_Trabajadores.setModel(model)
+            
+            self.listWidget_Trabajadores.clear()
+            for nombre in nombres:
+                item = QtWidgets.QListWidgetItem(nombre[0])
+                self.listWidget_Trabajadores.addItem(item)
+            
+            
+            cursor.close()
+            conexion.commit()
+            
+        except sqlite3.Error as e:
+            print(e)
+            
+        finally:
+            Conexion().close_connection(conexion)
         
     def emitirFichaje(self):
         
@@ -176,56 +207,7 @@ class Main(QMainWindow):
             
     def imprimir(self):
         
-        try:
-            conexion = Conexion().get_connection()            
-            cursor = conexion.cursor()
-            
-            fecha_desde = self.dateEdit_FechaDesde.date().toString(Qt.DateFormat.ISODate)
-            fecha_hasta = self.dateEdit_FechaHasta.date().toString(Qt.DateFormat.ISODate) 
-            
-            fecha_desde = QDate.fromString(fecha_desde, "yyyy-MM-dd")
-            
-            fecha_desde = fecha_desde.toString()
-            fecha_hasta = fecha_hasta.toString()
-                        
-            print(fecha_desde)
-            
-            query = 'SELECT idtr FROM Reloj WHERE fecha BETWEEN ? AND ?'
-            
-            cursor.execute(query, (fecha_desde, fecha_hasta))
-            
-            codigos = cursor.fetchall()
-            
-            print(codigos)
-            
-            if codigos is None:
-                self.textEdit_PanelMensajes.setText("No hay registros")
-                return
-            
-            imprimir = ''
-            
-            for codigo in codigos:
-                query = 'SELECT NOMBRE WHERE idtr = ?'
-                cursor.execute(query, (codigo,))
-                
-                nombre = cursor.fetchone()[0]
-                
-                query = 'SELECT APELLIDOS WHERE idtr = ?'
-                cursor.execute(query, (codigo,))
-                
-                apellidos = cursor.fetchone()[0]
-                
-                imprimir.append(codigo + ' ' + apellidos + ' ' + nombre + '\n')
-            
-            self.textEdit_PanelMensajes.setText(imprimir)
-            
-            cursor.close()
-            
-        except sqlite3.Error as e:
-            print(e)
-            
-        finally:
-            Conexion().close_connection(conexion)
+        self
 
         
     def update_label(self):
@@ -258,3 +240,5 @@ if __name__ == "__main__":
     ventana = Main()
     ventana.show()
     sys.exit(app.exec())
+    
+    
