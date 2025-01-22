@@ -15,8 +15,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QAbstractButton, QApplication, QDateEdit, QDialogButtonBox,
-    QHBoxLayout, QLabel, QListView, QListWidget,
+from PySide6.QtWidgets import (QAbstractButton, QAbstractItemView, QApplication, QDateEdit,
+    QDialogButtonBox, QHBoxLayout, QLabel, QListWidget,
     QListWidgetItem, QMainWindow, QPushButton, QSizePolicy,
     QStackedWidget, QTextEdit, QVBoxLayout, QWidget)
 
@@ -31,7 +31,7 @@ class Ui_MainWindow(object):
         self.widgetIzquierda = QWidget(self.centralwidget)
         self.widgetIzquierda.setObjectName(u"widgetIzquierda")
         self.widgetIzquierda.setGeometry(QRect(-1, -1, 191, 581))
-        self.widgetIzquierda.setStyleSheet(u"background-color:rgb(206, 151, 0);")
+        self.widgetIzquierda.setStyleSheet(u"background-color:rgb(150, 150, 150);")
         self.btn_Imprimir = QPushButton(self.widgetIzquierda)
         self.btn_Imprimir.setObjectName(u"btn_Imprimir")
         self.btn_Imprimir.setGeometry(QRect(20, 120, 151, 61))
@@ -43,14 +43,10 @@ class Ui_MainWindow(object):
         self.btn_Fichar.setStyleSheet(u"background-color:rgb(180, 180, 180);\n"
 "font-size: 20px;\n"
 "")
-        self.listWidget_Trabajadores = QListWidget(self.widgetIzquierda)
-        self.listWidget_Trabajadores.setObjectName(u"listWidget_Trabajadores")
-        self.listWidget_Trabajadores.setGeometry(QRect(10, 220, 249, 201))
-        self.listWidget_Trabajadores.setStyleSheet(u"background-color:rgb(255, 255, 255);")
         self.widgetAbajo = QWidget(self.centralwidget)
         self.widgetAbajo.setObjectName(u"widgetAbajo")
         self.widgetAbajo.setGeometry(QRect(189, 419, 621, 161))
-        self.widgetAbajo.setStyleSheet(u"background-color:rgb(151, 0, 206);")
+        self.widgetAbajo.setStyleSheet(u"background-color:rgb(100, 100, 100);")
         self.buttonBox = QDialogButtonBox(self.widgetAbajo)
         self.buttonBox.setObjectName(u"buttonBox")
         self.buttonBox.setGeometry(QRect(400, 30, 193, 71))
@@ -67,7 +63,7 @@ class Ui_MainWindow(object):
         self.stackedWidget.setObjectName(u"stackedWidget")
         self.stackedWidget.setGeometry(QRect(190, 0, 621, 421))
         self.stackedWidget.setFocusPolicy(Qt.WheelFocus)
-        self.stackedWidget.setStyleSheet(u"background-color:rgb(0, 146, 181);")
+        self.stackedWidget.setStyleSheet(u"background-color:rgb(200, 200, 200);")
         self.page_1 = QWidget()
         self.page_1.setObjectName(u"page_1")
         self.horizontalLayoutWidget = QWidget(self.page_1)
@@ -114,7 +110,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayoutWidget_3 = QWidget(self.page_1)
         self.verticalLayoutWidget_3.setObjectName(u"verticalLayoutWidget_3")
-        self.verticalLayoutWidget_3.setGeometry(QRect(70, 220, 251, 218))
+        self.verticalLayoutWidget_3.setGeometry(QRect(70, 220, 251, 191))
         self.verticalLayout_3 = QVBoxLayout(self.verticalLayoutWidget_3)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
@@ -124,11 +120,12 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_3.addWidget(self.label_6)
 
-        self.listView_Trabajadores = QListView(self.verticalLayoutWidget_3)
-        self.listView_Trabajadores.setObjectName(u"listView_Trabajadores")
-        self.listView_Trabajadores.setStyleSheet(u"background-color:rgb(255, 255, 255);")
+        self.listWidget_Trabajadores = QListWidget(self.verticalLayoutWidget_3)
+        self.listWidget_Trabajadores.setObjectName(u"listWidget_Trabajadores")
+        self.listWidget_Trabajadores.setStyleSheet(u"background-color:rgb(255, 255, 255);")
+        self.listWidget_Trabajadores.setSelectionMode(QAbstractItemView.MultiSelection)
 
-        self.verticalLayout_3.addWidget(self.listView_Trabajadores)
+        self.verticalLayout_3.addWidget(self.listWidget_Trabajadores)
 
         self.pushButtonImprimir = QPushButton(self.page_1)
         self.pushButtonImprimir.setObjectName(u"pushButtonImprimir")
@@ -149,12 +146,12 @@ class Ui_MainWindow(object):
         font = QFont()
         font.setPointSize(24)
         self.textEdit_Hora.setFont(font)
-        self.textEdit_Hora.setStyleSheet(u"background-color:rgb(255, 255, 255);")
+        self.textEdit_Hora.setStyleSheet(u"background-color:rgb(200, 200, 200);")
         self.textEdit_Fecha = QTextEdit(self.page_2)
         self.textEdit_Fecha.setObjectName(u"textEdit_Fecha")
         self.textEdit_Fecha.setGeometry(QRect(50, 60, 251, 87))
         self.textEdit_Fecha.setFont(font)
-        self.textEdit_Fecha.setStyleSheet(u"background-color:rgb(255, 255, 255);")
+        self.textEdit_Fecha.setStyleSheet(u"background-color:rgb(200, 200, 200);")
         self.horizontalLayoutWidget_2 = QWidget(self.page_2)
         self.horizontalLayoutWidget_2.setObjectName(u"horizontalLayoutWidget_2")
         self.horizontalLayoutWidget_2.setGeometry(QRect(50, 170, 401, 89))
@@ -178,7 +175,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)

@@ -21,11 +21,11 @@ class Main(QMainWindow):
 
     @staticmethod
     def log_fichaje(codigo, estado, nombre):
-        logging.info(f'Fichaje realizado: Código={codigo}, Nombre={nombre}, Estado={estado}')
+        logging.info(f'Fichaje realizado: Codigo={codigo}, Nombre={nombre}, Estado={estado}')
         
     @staticmethod
     def log_fichaje_rechazado(codigo, nombre):
-        logging.info(f'Fichaje rechazado: Código={codigo}, Nombre={nombre}')
+        logging.info(f'Fichaje rechazado: Codigo={codigo}, Nombre={nombre}')
 
     @staticmethod
     def log_error(error_message):
@@ -90,12 +90,6 @@ class Main(QMainWindow):
             cursor.execute(query)
             
             nombres = cursor.fetchall()
-            
-            model = QtGui.QStandardItemModel()
-            for nombre in nombres:
-                item = QtGui.QStandardItem(nombre[0])
-                model.appendRow(item)
-            self.listView_Trabajadores.setModel(model)
             
             self.listWidget_Trabajadores.clear()
             for nombre in nombres:

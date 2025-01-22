@@ -27,7 +27,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color:rgb(206, 151, 0);</string>
+     <string notr="true">background-color:rgb(150, 150, 150);</string>
     </property>
     <widget class="QPushButton" name="btn_Imprimir">
      <property name="geometry">
@@ -64,19 +64,6 @@ font-size: 20px;
       <string>fichar</string>
      </property>
     </widget>
-    <widget class="QListWidget" name="listWidget_Trabajadores">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>220</y>
-       <width>249</width>
-       <height>201</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color:rgb(255, 255, 255);</string>
-     </property>
-    </widget>
    </widget>
    <widget class="QWidget" name="widgetAbajo" native="true">
     <property name="geometry">
@@ -88,7 +75,7 @@ font-size: 20px;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color:rgb(151, 0, 206);</string>
+     <string notr="true">background-color:rgb(100, 100, 100);</string>
     </property>
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="geometry">
@@ -142,10 +129,10 @@ font-size: 20px;
      <enum>Qt::WheelFocus</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color:rgb(0, 146, 181);</string>
+     <string notr="true">background-color:rgb(200, 200, 200);</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="page_1">
      <widget class="QWidget" name="horizontalLayoutWidget">
@@ -210,7 +197,7 @@ font-size: 30px;</string>
         <x>70</x>
         <y>220</y>
         <width>251</width>
-        <height>218</height>
+        <height>191</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -225,9 +212,12 @@ font-size: 30px;</string>
         </widget>
        </item>
        <item>
-        <widget class="QListView" name="listView_Trabajadores">
+        <widget class="QListWidget" name="listWidget_Trabajadores">
          <property name="styleSheet">
           <string notr="true">background-color:rgb(255, 255, 255);</string>
+         </property>
+         <property name="selectionMode">
+          <enum>QAbstractItemView::MultiSelection</enum>
          </property>
         </widget>
        </item>
@@ -284,7 +274,7 @@ font-size: 20px;</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:rgb(255, 255, 255);</string>
+       <string notr="true">background-color:rgb(200, 200, 200);</string>
       </property>
       <property name="html">
        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -309,7 +299,7 @@ p, li { white-space: pre-wrap; }
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:rgb(255, 255, 255);</string>
+       <string notr="true">background-color:rgb(200, 200, 200);</string>
       </property>
       <property name="html">
        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
