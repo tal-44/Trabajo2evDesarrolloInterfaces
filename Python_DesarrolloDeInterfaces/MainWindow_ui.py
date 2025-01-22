@@ -80,12 +80,12 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.label_2)
 
-        self.dateEditFechaDesde = QDateEdit(self.horizontalLayoutWidget)
-        self.dateEditFechaDesde.setObjectName(u"dateEditFechaDesde")
-        self.dateEditFechaDesde.setStyleSheet(u"background-color:rgb(255, 255, 255);\n"
+        self.dateEdit_FechaDesde = QDateEdit(self.horizontalLayoutWidget)
+        self.dateEdit_FechaDesde.setObjectName(u"dateEdit_FechaDesde")
+        self.dateEdit_FechaDesde.setStyleSheet(u"background-color:rgb(255, 255, 255);\n"
 "font-size: 30px;")
 
-        self.verticalLayout.addWidget(self.dateEditFechaDesde)
+        self.verticalLayout.addWidget(self.dateEdit_FechaDesde)
 
 
         self.horizontalLayout.addLayout(self.verticalLayout)
@@ -174,7 +174,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)

@@ -15,8 +15,23 @@ from PyQt6.QtCore import QPropertyAnimation, QEasingCurve
 from PyQt6 import QtCore, QtWidgets
 from PyQt6.uic import loadUi
 from PyQt6.QtCore import Qt, QTimer, QTime, QDate, pyqtSlot
+import logging
 
 class Main(QMainWindow):
+    
+    logging.basicConfig(filename='app.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+    @staticmethod
+    def log_fichaje(codigo, estado, nombre):
+        logging.info(f'Fichaje realizado: Código={codigo}, Nombre={nombre}, Estado={estado}')
+        
+    @staticmethod
+    def log_fichaje_rechazado(codigo, nombre):
+        logging.info(f'Fichaje rechazado: Código={codigo}, Nombre={nombre}')
+
+    @staticmethod
+    def log_error(error_message):
+        logging.error(f'{error_message}')
     
     def __init__(self, parent=None):
         
@@ -25,20 +40,6 @@ class Main(QMainWindow):
         
         
         """
-        
-        """       
-        from DAO import Conexion  # Assuming Conexion is defined in Fichaje module
-        
-        conexion = Conexion().get_connection()
-        self.cursor = conexion.cursor()
-        
-        print(self.cursor.execute("SELECT * FROM Trabajador"))
-        
-        conexion.commit()
-        
-        self.cursor.close()
-        Conexion.close_connection(conexion)
-        """        
         
         super(Main, self).__init__()
         super().__init__(parent)
@@ -51,6 +52,7 @@ class Main(QMainWindow):
         self.btn_Imprimir.clicked.connect(self.mostrarPanelImprimir)
         
         self.btn_EmitirFichaje.clicked.connect(self.emitirFichaje)
+        self.pushButtonImprimir.clicked.connect(self.imprimir)
 
         
     def mostrarInfo(self, mensaje):
@@ -61,39 +63,51 @@ class Main(QMainWindow):
     def mostrarPanelFichar(self):
         
         self.stackedWidget.setCurrentIndex(1)
+        self.btn_Imprimir.show()
+        self.btn_Fichar.hide()
+        self.buttonBox.hide()
         
         self.update_label()
+        self.update_label_panelMensajes()
+        
+        self.textEdit_TeclearCodigo.setFocus()
         
     def mostrarPanelImprimir(self):        
         self.stackedWidget.setCurrentIndex(0)
+        self.btn_Fichar.show()
+        self.btn_Imprimir.hide()
+        self.buttonBox.hide()
+        
+        self.update_label()
+        self.update_label_panelMensajes()
         
     def emitirFichaje(self):
         
-        codigo = self.textEdit_TeclearCodigo.toPlainText()
-        
-        
-        
-        if codigo == "":
+        codigo = self.textEdit_TeclearCodigo.toPlainText()        
+                
+        if codigo == "" or codigo is None:
             self.mostrarInfo("Introduzca un codigo")
+            Main.log_error("Codigo no introducido")
             return
         
-        try:
+        try:            
             
-            
-            conexion = Conexion().get_connection()
-                       
+            conexion = Conexion().get_connection()                       
             cursor = conexion.cursor()
                         
             query = 'SELECT Estado FROM Trabajador WHERE idtr = ?'
             
             cursor.execute(query, (codigo,))
             estado = cursor.fetchone()
-            estado = estado[0]
             
             if estado is None:
                 self.textEdit_PanelMensajes.setText("Codigo no valido")
+                self.log_error("Codigo no valido")
                 return
-            elif estado == 'IN':
+            
+            estado = estado[0]
+            
+            if estado == 'IN':
                 estado = 'OUT'
             else:
                 estado = 'IN'
@@ -107,19 +121,109 @@ class Main(QMainWindow):
             cursor.execute(query, (codigo,))
             nombre = cursor.fetchone()[0]
             
+            cursor.close()
+            conexion.commit()
+            
+            self.buttonBox.show()
+            self.textEdit_PanelMensajes.setText(nombre + ' ' + estado + ', ¿Acepta el fichaje?')
+            
+            self.buttonBox.accepted.connect(lambda: self.confirmar_fichaje(cursor, conexion, codigo, nombre, estado))
+            self.buttonBox.rejected.connect(lambda: self.cancelar_fichaje(codigo, nombre, cursor))
+                    
+        except sqlite3.Error as e:
+            print(e)
+            self.log_error(e)
+                        
+        finally:
+            Conexion().close_connection(conexion)
+            
+    def confirmar_fichaje(self, cursor, conexion, codigo, nombre, estado):
+        
+        try:
+        
+            conexion = Conexion().get_connection()                       
+            cursor = conexion.cursor()
+        
             query = 'INSERT INTO Reloj (idtr, nombre, fecha, hora, estado) VALUES (?, ?, ?, ?, ?)'
-            
             cursor.execute(query, (codigo, nombre, QDate.currentDate().toString(), QTime.currentTime().toString(), estado))
-            
+        
+            self.log_fichaje(codigo, estado, nombre)
+        
             self.textEdit_PanelMensajes.setText("Fichaje realizado")
+        
+            self.buttonBox.hide()        
+            self.textEdit_TeclearCodigo.setText("")
+            self.textEdit_TeclearCodigo.setFocus()
+                
+            cursor.close()
+            conexion.commit()
+             
+        except sqlite3.Error as e:
+            print(e)
+            self.log_error(e)    
+        finally:
+            Conexion().close_connection(conexion)
+        
+    def cancelar_fichaje(self, codigo, nombre, cursor):
+        
+        self.log_fichaje_rechazado(codigo, nombre)
+        
+        self.textEdit_PanelMensajes.setText("Fichaje cancelado")
+        
+        self.buttonBox.hide()
+        self.textEdit_TeclearCodigo.setText("")
+        self.textEdit_TeclearCodigo.setFocus()
+            
+    def imprimir(self):
+        
+        try:
+            conexion = Conexion().get_connection()            
+            cursor = conexion.cursor()
+            
+            fecha_desde = self.dateEdit_FechaDesde.date().toString(Qt.DateFormat.ISODate)
+            fecha_hasta = self.dateEdit_FechaHasta.date().toString(Qt.DateFormat.ISODate) 
+            
+            fecha_desde = QDate.fromString(fecha_desde, "yyyy-MM-dd")
+            
+            fecha_desde = fecha_desde.toString()
+            fecha_hasta = fecha_hasta.toString()
+                        
+            print(fecha_desde)
+            
+            query = 'SELECT idtr FROM Reloj WHERE fecha BETWEEN ? AND ?'
+            
+            cursor.execute(query, (fecha_desde, fecha_hasta))
+            
+            codigos = cursor.fetchall()
+            
+            print(codigos)
+            
+            if codigos is None:
+                self.textEdit_PanelMensajes.setText("No hay registros")
+                return
+            
+            imprimir = ''
+            
+            for codigo in codigos:
+                query = 'SELECT NOMBRE WHERE idtr = ?'
+                cursor.execute(query, (codigo,))
+                
+                nombre = cursor.fetchone()[0]
+                
+                query = 'SELECT APELLIDOS WHERE idtr = ?'
+                cursor.execute(query, (codigo,))
+                
+                apellidos = cursor.fetchone()[0]
+                
+                imprimir.append(codigo + ' ' + apellidos + ' ' + nombre + '\n')
+            
+            self.textEdit_PanelMensajes.setText(imprimir)
             
             cursor.close()
             
-            conexion.commit()
-        
         except sqlite3.Error as e:
             print(e)
-                        
+            
         finally:
             Conexion().close_connection(conexion)
 
@@ -132,12 +236,20 @@ class Main(QMainWindow):
         
         fecha_actual = QDate.currentDate()
         hora_actual = QTime.currentTime()
-        self.textEdit_Fecha.setText(fecha_actual.toString())
-        self.textEdit_Hora.setText(hora_actual.toString())
+        self.textEdit_Fecha.setText(fecha_actual.toString("dd/MM/yy"))
+        self.textEdit_Hora.setText(hora_actual.toString("HH:mm:ss"))
         
         timer = QTimer(self)
         timer.timeout.connect(self.update_label)
         timer.singleShot(1000, self.update_label)
+        
+    def update_label_panelMensajes(self):
+        
+        self.textEdit_PanelMensajes.setText("")
+        
+        timer = QTimer(self)
+        timer.timeout.connect(self.update_label_panelMensajes)
+        timer.singleShot(10000, self.update_label_panelMensajes)
     
     
 if __name__ == "__main__":    

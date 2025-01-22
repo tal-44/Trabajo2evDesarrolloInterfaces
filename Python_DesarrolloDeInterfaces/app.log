@@ -1,0 +1,32 @@
+2025-01-21 21:00:05,551 - ERROR - Error: Codigo no introducido
+2025-01-21 21:00:07,033 - ERROR - Error: Codigo no introducido
+2025-01-21 21:00:10,435 - INFO - Fichaje realizado: Código=4, Estado=IN
+2025-01-21 21:00:14,417 - ERROR - Error: Codigo no valido
+2025-01-21 21:00:18,965 - ERROR - Error: Codigo no valido
+2025-01-21 21:00:22,121 - INFO - Fichaje realizado: Código=1, Estado=IN
+2025-01-21 21:00:23,497 - INFO - Fichaje realizado: Código=1, Estado=OUT
+2025-01-21 21:00:26,283 - INFO - Fichaje realizado: Código=4, Estado=OUT
+2025-01-21 21:09:43,608 - ERROR - Codigo no introducido
+2025-01-21 21:09:45,700 - INFO - Fichaje realizado: Código=4, Nombre=Pedro, Estado=IN
+2025-01-21 21:09:47,560 - ERROR - Codigo no valido
+2025-01-21 21:09:49,969 - INFO - Fichaje realizado: Código=4, Nombre=Pedro, Estado=OUT
+2025-01-21 21:09:52,059 - INFO - Fichaje realizado: Código=1, Nombre=Gonzalo, Estado=IN
+2025-01-21 21:09:52,931 - INFO - Fichaje realizado: Código=1, Nombre=Gonzalo, Estado=OUT
+2025-01-21 21:09:55,571 - ERROR - Codigo no valido
+2025-01-21 21:09:58,556 - ERROR - Codigo no introducido
+2025-01-22 10:07:41,950 - ERROR - Codigo no introducido
+2025-01-22 10:07:45,470 - ERROR - Codigo no valido
+2025-01-22 10:07:50,354 - INFO - Fichaje realizado: Código=4, Nombre=Pedro, Estado=IN
+2025-01-22 10:07:59,005 - INFO - Fichaje realizado: Código=2, Nombre=Rodrigo, Estado=IN
+2025-01-22 10:13:27,223 - ERROR - Codigo no introducido
+2025-01-22 10:13:30,084 - ERROR - Codigo no valido
+2025-01-22 10:13:33,251 - ERROR - Codigo no valido
+2025-01-22 10:31:21,584 - INFO - Fichaje realizado: Código=4, Nombre=Pedro, Estado=OUT
+2025-01-22 10:42:15,363 - INFO - Fichaje realizado: Código=4, Nombre=Pedro, Estado=IN
+2025-01-22 10:42:56,198 - INFO - Fichaje rechazado: Código=4, Nombre=Pedro
+2025-01-22 10:43:16,876 - INFO - Fichaje rechazado: Código=4, Nombre=Pedro
+2025-01-22 10:43:21,162 - INFO - Fichaje realizado: Código=4, Nombre=Pedro, Estado=OUT
+2025-01-22 10:43:21,188 - INFO - Fichaje realizado: Código=4, Nombre=Pedro, Estado=IN
+2025-01-22 10:43:23,883 - ERROR - Codigo no introducido
+2025-01-22 10:43:26,810 - ERROR - Codigo no valido
+2025-01-22 10:45:47,171 - INFO - Fichaje rechazado: Código=1, Nombre=Gonzalo
