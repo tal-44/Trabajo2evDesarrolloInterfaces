@@ -39,7 +39,7 @@
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color:rgb(180, 180, 180);
+      <string notr="true">background-color:rgb(140, 140, 255);
 font-size: 20px;</string>
      </property>
      <property name="text">
@@ -56,7 +56,7 @@ font-size: 20px;</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color:rgb(180, 180, 180);
+      <string notr="true">background-color:rgb(140, 140, 255);
 font-size: 20px;
 </string>
      </property>
@@ -87,7 +87,7 @@ font-size: 20px;
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color:rgb(180, 180, 180);</string>
+      <string notr="true">background-color:rgb(140, 140, 255);</string>
      </property>
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -132,7 +132,7 @@ font-size: 20px;
      <string notr="true">background-color:rgb(200, 200, 200);</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="page_1">
      <widget class="QWidget" name="horizontalLayoutWidget">
@@ -163,6 +163,9 @@ font-size: 20px;
             <string notr="true">background-color:rgb(255, 255, 255);
 font-size: 30px;</string>
            </property>
+           <property name="calendarPopup">
+            <bool>true</bool>
+           </property>
           </widget>
          </item>
         </layout>
@@ -184,6 +187,9 @@ font-size: 30px;</string>
            <property name="styleSheet">
             <string notr="true">background-color:rgb(255, 255, 255);
 font-size: 30px;</string>
+           </property>
+           <property name="calendarPopup">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -214,7 +220,19 @@ font-size: 30px;</string>
        <item>
         <widget class="QListWidget" name="listWidget_Trabajadores">
          <property name="styleSheet">
-          <string notr="true">background-color:rgb(255, 255, 255);</string>
+          <string notr="true">background-color:rgb(255, 255, 255);
+
+QListWidget{
+	background:white;
+}
+QListWidget::item{
+	background:white;
+	color:black;
+}
+QListWidget::item:selected{
+	background:lightblue;
+	color:white;
+}</string>
          </property>
          <property name="selectionMode">
           <enum>QAbstractItemView::MultiSelection</enum>
@@ -233,7 +251,7 @@ font-size: 30px;</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:rgb(180, 180, 180);
+       <string notr="true">background-color:rgb(140, 140, 255);
 font-size: 20px;</string>
       </property>
       <property name="text">

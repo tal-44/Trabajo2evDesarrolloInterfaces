@@ -22,7 +22,7 @@ class Main(QMainWindow):
     @staticmethod
     def log_fichaje(codigo, estado, nombre):
         logging.info(f'Fichaje realizado: Codigo={codigo}, Nombre={nombre}, Estado={estado}')
-        
+                
     @staticmethod
     def log_fichaje_rechazado(codigo, nombre):
         logging.info(f'Fichaje rechazado: Codigo={codigo}, Nombre={nombre}')
@@ -75,6 +75,9 @@ class Main(QMainWindow):
         self.btn_Fichar.show()
         self.btn_Imprimir.hide()
         self.buttonBox.hide()
+        
+        self.dateEdit_FechaDesde.setDate(QDate.currentDate())
+        self.dateEdit_FechaHasta.setDate(QDate.currentDate())
         
         self.update_label_panelMensajes()
         self.mostrarListaTrabajadores()
@@ -201,7 +204,44 @@ class Main(QMainWindow):
             
     def imprimir(self):
         
-        self
+        trabajadores = self.listWidget_Trabajadores.selectedItems()
+        
+        if len(trabajadores) == 0:
+            self.mostrarInfo("No se han seleccionado trabajadores")
+            self.log_error("No se han seleccionado trabajadores")
+            return
+
+        fecha_desde = self.dateEdit_FechaDesde.date().toString()
+        fecha_hasta = self.dateEdit_FechaHasta.date().toString()
+        
+        if fecha_desde > fecha_hasta:
+            self.mostrarInfo("Las fechas no son coherentes")
+            self.log_error("Las fechas no son coherentes")
+            return
+        
+        try:
+            
+            conexion = Conexion().get_connection()
+            cursor = conexion.cursor()
+            
+            query = 'SELECT * FROM Reloj WHERE fecha BETWEEN ? AND ? AND nombre = ? ORDER BY fecha, hora'
+            
+            fichajes = []
+            
+            for trabajador in trabajadores:
+                cursor.execute(query, (fecha_desde, fecha_hasta, trabajador.text()))
+                fichaje = cursor.fetchall()
+                fichajes.append(fichaje)
+                
+            cursor.close()
+                
+            
+        
+        except sqlite3.Error as e:
+            print(e)
+            self.log_error(e)
+        finally:
+            Conexion().close_connection(conexion)
 
         
     def update_label(self):

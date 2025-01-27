@@ -35,12 +35,12 @@ class Ui_MainWindow(object):
         self.btn_Imprimir = QPushButton(self.widgetIzquierda)
         self.btn_Imprimir.setObjectName(u"btn_Imprimir")
         self.btn_Imprimir.setGeometry(QRect(20, 120, 151, 61))
-        self.btn_Imprimir.setStyleSheet(u"background-color:rgb(180, 180, 180);\n"
+        self.btn_Imprimir.setStyleSheet(u"background-color:rgb(140, 140, 255);\n"
 "font-size: 20px;")
         self.btn_Fichar = QPushButton(self.widgetIzquierda)
         self.btn_Fichar.setObjectName(u"btn_Fichar")
         self.btn_Fichar.setGeometry(QRect(20, 40, 151, 61))
-        self.btn_Fichar.setStyleSheet(u"background-color:rgb(180, 180, 180);\n"
+        self.btn_Fichar.setStyleSheet(u"background-color:rgb(140, 140, 255);\n"
 "font-size: 20px;\n"
 "")
         self.widgetAbajo = QWidget(self.centralwidget)
@@ -50,7 +50,7 @@ class Ui_MainWindow(object):
         self.buttonBox = QDialogButtonBox(self.widgetAbajo)
         self.buttonBox.setObjectName(u"buttonBox")
         self.buttonBox.setGeometry(QRect(400, 30, 193, 71))
-        self.buttonBox.setStyleSheet(u"background-color:rgb(180, 180, 180);")
+        self.buttonBox.setStyleSheet(u"background-color:rgb(140, 140, 255);")
         self.buttonBox.setOrientation(Qt.Vertical)
         self.buttonBox.setStandardButtons(QDialogButtonBox.Cancel|QDialogButtonBox.Ok)
         self.buttonBox.setCenterButtons(False)
@@ -84,6 +84,7 @@ class Ui_MainWindow(object):
         self.dateEdit_FechaDesde.setObjectName(u"dateEdit_FechaDesde")
         self.dateEdit_FechaDesde.setStyleSheet(u"background-color:rgb(255, 255, 255);\n"
 "font-size: 30px;")
+        self.dateEdit_FechaDesde.setCalendarPopup(True)
 
         self.verticalLayout.addWidget(self.dateEdit_FechaDesde)
 
@@ -102,6 +103,7 @@ class Ui_MainWindow(object):
         self.dateEdit_FechaHasta.setObjectName(u"dateEdit_FechaHasta")
         self.dateEdit_FechaHasta.setStyleSheet(u"background-color:rgb(255, 255, 255);\n"
 "font-size: 30px;")
+        self.dateEdit_FechaHasta.setCalendarPopup(True)
 
         self.verticalLayout_2.addWidget(self.dateEdit_FechaHasta)
 
@@ -122,7 +124,19 @@ class Ui_MainWindow(object):
 
         self.listWidget_Trabajadores = QListWidget(self.verticalLayoutWidget_3)
         self.listWidget_Trabajadores.setObjectName(u"listWidget_Trabajadores")
-        self.listWidget_Trabajadores.setStyleSheet(u"background-color:rgb(255, 255, 255);")
+        self.listWidget_Trabajadores.setStyleSheet(u"background-color:rgb(255, 255, 255);\n"
+"\n"
+"QListWidget{\n"
+"	background:white;\n"
+"}\n"
+"QListWidget::item{\n"
+"	background:white;\n"
+"	color:black;\n"
+"}\n"
+"QListWidget::item:selected{\n"
+"	background:lightblue;\n"
+"	color:white;\n"
+"}")
         self.listWidget_Trabajadores.setSelectionMode(QAbstractItemView.MultiSelection)
 
         self.verticalLayout_3.addWidget(self.listWidget_Trabajadores)
@@ -130,7 +144,7 @@ class Ui_MainWindow(object):
         self.pushButtonImprimir = QPushButton(self.page_1)
         self.pushButtonImprimir.setObjectName(u"pushButtonImprimir")
         self.pushButtonImprimir.setGeometry(QRect(390, 270, 93, 28))
-        self.pushButtonImprimir.setStyleSheet(u"background-color:rgb(180, 180, 180);\n"
+        self.pushButtonImprimir.setStyleSheet(u"background-color:rgb(140, 140, 255);\n"
 "font-size: 20px;")
         self.stackedWidget.addWidget(self.page_1)
         self.page_2 = QWidget()
@@ -175,7 +189,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
