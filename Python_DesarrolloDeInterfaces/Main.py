@@ -1,4 +1,6 @@
 from datetime import *
+
+from log.log import Log
 """
 from Fichaje import *
 from Trabajador import *
@@ -17,20 +19,8 @@ import logging
 
 class Main(QMainWindow):
     
-    logging.basicConfig(filename='app.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-
-    @staticmethod
-    def log_fichaje(codigo, estado, nombre):
-        logging.info(f'Fichaje realizado: Codigo={codigo}, Nombre={nombre}, Estado={estado}')
-                
-    @staticmethod
-    def log_fichaje_rechazado(codigo, nombre):
-        logging.info(f'Fichaje rechazado: Codigo={codigo}, Nombre={nombre}')
-
-    @staticmethod
-    def log_error(error_message):
-        logging.error(f'{error_message}')
-    
+    logging.basicConfig(filename='log/app.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+        
     def __init__(self, parent=None):
         
         """
@@ -104,7 +94,7 @@ class Main(QMainWindow):
             conexion.commit()
             
         except sqlite3.Error as e:
-            print(e)
+            Log.log_error(e)
             
         finally:
             Conexion().close_connection(conexion)
@@ -115,7 +105,7 @@ class Main(QMainWindow):
                 
         if codigo == "" or codigo is None:
             self.mostrarInfo("Introduzca un codigo")
-            Main.log_error("Codigo no introducido")
+            Log.log_error("Codigo no introducido")
             return
         
         try:            
@@ -130,7 +120,7 @@ class Main(QMainWindow):
             
             if estado is None:
                 self.textEdit_PanelMensajes.setText("Codigo no valido")
-                self.log_error("Codigo no valido")
+                Log.log_error("Codigo no valido")
                 return
             
             estado = estado[0]
@@ -160,7 +150,7 @@ class Main(QMainWindow):
                     
         except sqlite3.Error as e:
             print(e)
-            self.log_error(e)
+            Log.log_error(e)
                         
         finally:
             Conexion().close_connection(conexion)
@@ -175,7 +165,7 @@ class Main(QMainWindow):
             query = 'INSERT INTO Reloj (idtr, nombre, fecha, hora, estado) VALUES (?, ?, ?, ?, ?)'
             cursor.execute(query, (codigo, nombre, QDate.currentDate().toString(), QTime.currentTime().toString(), estado))
         
-            self.log_fichaje(codigo, estado, nombre)
+            Log.log_fichaje(codigo, estado, nombre)
         
             self.textEdit_PanelMensajes.setText("Fichaje realizado")
         
@@ -188,13 +178,13 @@ class Main(QMainWindow):
              
         except sqlite3.Error as e:
             print(e)
-            self.log_error(e)    
+            Log.log_error(e)    
         finally:
             Conexion().close_connection(conexion)
         
     def cancelar_fichaje(self, codigo, nombre, cursor):
         
-        self.log_fichaje_rechazado(codigo, nombre)
+        Log.log_fichaje_rechazado(codigo, nombre)
         
         self.textEdit_PanelMensajes.setText("Fichaje cancelado")
         
@@ -208,7 +198,7 @@ class Main(QMainWindow):
         
         if len(trabajadores) == 0:
             self.mostrarInfo("No se han seleccionado trabajadores")
-            self.log_error("No se han seleccionado trabajadores")
+            Log.log_error("No se han seleccionado trabajadores")
             return
 
         fecha_desde = self.dateEdit_FechaDesde.date().toString()
@@ -216,7 +206,7 @@ class Main(QMainWindow):
         
         if fecha_desde > fecha_hasta:
             self.mostrarInfo("Las fechas no son coherentes")
-            self.log_error("Las fechas no son coherentes")
+            Log.log_error("Las fechas no son coherentes")
             return
         
         try:
@@ -239,7 +229,7 @@ class Main(QMainWindow):
         
         except sqlite3.Error as e:
             print(e)
-            self.log_error(e)
+            Log.log_error(e)
         finally:
             Conexion().close_connection(conexion)
 
