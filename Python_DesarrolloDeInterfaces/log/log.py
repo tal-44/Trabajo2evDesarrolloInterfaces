@@ -1,7 +1,7 @@
 import logging
 
 class Log:
-
+    
     @staticmethod
     def log_fichaje(codigo, estado, nombre):
         logging.info(f'Fichaje realizado: Codigo={codigo}, Nombre={nombre}, Estado={estado}')

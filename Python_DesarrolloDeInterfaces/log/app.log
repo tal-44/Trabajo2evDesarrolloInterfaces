@@ -34,3 +34,75 @@
 2025-01-22 20:17:06,816 - ERROR - Codigo no valido
 2025-01-22 21:11:31,473 - ERROR - near "WHERE": syntax error
 2025-01-27 17:43:26,470 - ERROR - Codigo no introducido
+2025-02-04 21:14:58,279 - ERROR - Codigo no introducido
+2025-02-04 21:15:03,376 - ERROR - Codigo no introducido
+2025-02-04 21:15:11,754 - ERROR - Codigo no valido
+2025-02-04 21:15:17,336 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-04 21:15:21,351 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=OUT
+2025-02-04 21:15:21,371 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
+2025-02-04 21:15:25,243 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-04 21:15:25,246 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-04 21:15:25,246 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-04 21:15:28,316 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=OUT
+2025-02-04 21:15:28,334 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
+2025-02-04 21:15:28,346 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=OUT
+2025-02-04 21:15:28,355 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
+2025-02-04 21:15:30,697 - ERROR - Codigo no valido
+2025-02-04 21:15:34,481 - ERROR - Codigo no introducido
+2025-02-04 21:15:38,126 - ERROR - Codigo no introducido
+2025-02-04 21:15:38,287 - ERROR - Codigo no introducido
+2025-02-04 21:15:38,426 - ERROR - Codigo no introducido
+2025-02-04 21:15:38,559 - ERROR - Codigo no introducido
+2025-02-04 21:15:38,719 - ERROR - Codigo no introducido
+2025-02-04 21:15:38,870 - ERROR - Codigo no introducido
+2025-02-04 21:15:39,012 - ERROR - Codigo no introducido
+2025-02-04 21:15:39,134 - ERROR - Codigo no introducido
+2025-02-04 21:15:39,279 - ERROR - Codigo no introducido
+2025-02-04 21:15:39,509 - ERROR - Codigo no introducido
+2025-02-04 21:15:40,393 - ERROR - Codigo no introducido
+2025-02-04 21:15:40,557 - ERROR - Codigo no introducido
+2025-02-04 21:15:40,683 - ERROR - Codigo no introducido
+2025-02-04 21:15:40,846 - ERROR - Codigo no introducido
+2025-02-04 21:15:40,995 - ERROR - Codigo no introducido
+2025-02-04 21:15:41,215 - ERROR - Codigo no introducido
+2025-02-04 21:15:48,363 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-04 21:15:48,367 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-04 21:15:48,369 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-04 21:15:48,369 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-04 21:15:48,370 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-04 21:15:52,153 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=OUT
+2025-02-04 21:15:52,167 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
+2025-02-04 21:15:52,175 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=OUT
+2025-02-04 21:15:52,184 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
+2025-02-04 21:15:52,191 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=OUT
+2025-02-04 21:15:52,200 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
+2025-02-04 21:15:55,210 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-04 21:15:55,214 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-04 21:15:55,215 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-04 21:15:55,215 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-04 21:15:55,216 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-04 21:15:55,217 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-04 21:15:55,218 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-04 21:15:58,842 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=OUT
+2025-02-04 21:15:58,861 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
+2025-02-04 21:15:58,871 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=OUT
+2025-02-04 21:15:58,880 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
+2025-02-04 21:15:58,887 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=OUT
+2025-02-04 21:15:58,894 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
+2025-02-04 21:15:58,901 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=OUT
+2025-02-04 21:15:58,907 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
+2025-02-04 21:16:01,361 - ERROR - Codigo no valido
+2025-02-04 21:16:02,367 - ERROR - Codigo no valido
+2025-02-04 21:16:07,286 - ERROR - Codigo no valido
+2025-02-04 21:16:43,593 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=OUT
+2025-02-04 21:17:05,059 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-04 21:17:08,443 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
+2025-02-04 21:17:08,462 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=OUT
+2025-02-04 21:17:39,889 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-04 21:17:56,262 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=OUT
+2025-02-04 21:18:08,584 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-04 21:18:12,160 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
+2025-02-04 21:18:12,178 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=OUT
+2025-02-04 21:18:15,476 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
+2025-02-04 21:18:15,490 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=OUT
+2025-02-04 21:18:15,500 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
