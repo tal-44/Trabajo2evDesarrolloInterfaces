@@ -106,3 +106,8 @@
 2025-02-04 21:18:15,476 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
 2025-02-04 21:18:15,490 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=OUT
 2025-02-04 21:18:15,500 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
+2025-02-06 23:32:15,682 - ERROR - No se han seleccionado trabajadores
+2025-02-06 23:36:06,421 - ERROR - No se han seleccionado trabajadores
+2025-02-08 10:53:55,196 - ERROR - Las fechas no son coherentes
+2025-02-08 10:54:23,957 - ERROR - Las fechas no son coherentes
+2025-02-08 11:00:24,411 - ERROR - No se han seleccionado trabajadores

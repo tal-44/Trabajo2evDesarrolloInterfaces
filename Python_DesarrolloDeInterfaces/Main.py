@@ -1,12 +1,13 @@
-from datetime import *
+from DAO import Conexion
+from Log import Log
+from Modelo import Impresion_PDF
 
-from log.log import Log
 """
 from Fichaje import *
 from Trabajador import *
 """
-from DAO.Conexion import Conexion
 
+from datetime import *
 import sqlite3
 from io import *
 import sys
@@ -44,12 +45,14 @@ class Main(QMainWindow):
 
         
     def mostrarInfo(self, mensaje):
+        '''
+        Muestra un mensaje en el panel de mensajes
+        '''
         
         self.textEdit_PanelMensajes.setText(mensaje)
         self.textEdit_PanelMensajes.show()
         
     def mostrarPanelFichar(self):
-        
         self.stackedWidget.setCurrentIndex(1)
         self.btn_Imprimir.show()
         self.btn_Fichar.hide()
@@ -73,6 +76,9 @@ class Main(QMainWindow):
         self.mostrarListaTrabajadores()
         
     def mostrarListaTrabajadores(self):
+        '''
+        Metodo que hace una consulta a la base de datos y muestra los trabajadores en el listWidget
+        '''
         
         try:
             conexion = Conexion().get_connection()            
@@ -100,6 +106,9 @@ class Main(QMainWindow):
             Conexion().close_connection(conexion)
         
     def emitirFichaje(self):
+        '''
+        Comprueba el codigo introducido y realiza el fichaje si es correcto
+        '''
         
         codigo = self.textEdit_TeclearCodigo.toPlainText()        
                 
@@ -158,6 +167,7 @@ class Main(QMainWindow):
     def confirmar_fichaje(self, cursor, conexion, codigo, nombre, estado):
         
         try:
+            
         
             conexion = Conexion().get_connection()                       
             cursor = conexion.cursor()
@@ -201,8 +211,11 @@ class Main(QMainWindow):
             Log.log_error("No se han seleccionado trabajadores")
             return
 
-        fecha_desde = self.dateEdit_FechaDesde.date().toString()
-        fecha_hasta = self.dateEdit_FechaHasta.date().toString()
+    #    fecha_desde = self.dateEdit_FechaDesde.date().toString()
+    #    fecha_hasta = self.dateEdit_FechaHasta.date().toString()
+        
+        fecha_desde = self.dateEdit_FechaDesde.date()
+        fecha_hasta = self.dateEdit_FechaHasta.date()
         
         if fecha_desde > fecha_hasta:
             self.mostrarInfo("Las fechas no son coherentes")
@@ -214,15 +227,20 @@ class Main(QMainWindow):
             conexion = Conexion().get_connection()
             cursor = conexion.cursor()
             
-            query = 'SELECT * FROM Reloj WHERE fecha BETWEEN ? AND ? AND nombre = ? ORDER BY fecha, hora'
+            query = 'SELECT idtr FROM Trabajador WHERE nombre = ?'
             
-            fichajes = []
+            idtrs = []
             
             for trabajador in trabajadores:
-                cursor.execute(query, (fecha_desde, fecha_hasta, trabajador.text()))
-                fichaje = cursor.fetchall()
-                fichajes.append(fichaje)
                 
+                cursor.execute(query, (trabajador.text(),))
+                idtr = cursor.fetchone()[0]
+                
+                idtrs.append(idtr)
+                
+            impresion_pdf = Impresion_PDF()
+            impresion_pdf.crear(fecha_desde, fecha_hasta, trabajadores=idtrs)
+                 
             cursor.close()
                 
             
@@ -264,5 +282,3 @@ if __name__ == "__main__":
     ventana = Main()
     ventana.show()
     sys.exit(app.exec())
-    
-    
