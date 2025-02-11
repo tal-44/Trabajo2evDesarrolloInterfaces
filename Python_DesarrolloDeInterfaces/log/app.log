@@ -111,3 +111,6 @@
 2025-02-08 10:53:55,196 - ERROR - Las fechas no son coherentes
 2025-02-08 10:54:23,957 - ERROR - Las fechas no son coherentes
 2025-02-08 11:00:24,411 - ERROR - No se han seleccionado trabajadores
+2025-02-11 18:08:00,393 - ERROR - No se han seleccionado trabajadores
+2025-02-11 18:08:02,248 - ERROR - Error binding parameter 2: type 'QDate' is not supported
+2025-02-11 18:33:34,083 - ERROR - No se han seleccionado trabajadores

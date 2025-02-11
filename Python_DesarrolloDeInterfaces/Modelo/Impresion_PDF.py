@@ -1,79 +1,75 @@
 from fpdf import FPDF
-
-from ..DAO.Conexion import Conexion
+from DAO.Conexion import Conexion
 
 class Impresion_PDF(FPDF):
+    def __init__(self):
+        super().__init__()
+        self.unifontsubset = False
     
     def header(self):
-    #    self.set_font('Arial', 'B', 12)
+        self.set_font('Arial', 'B', 12)
         self.cell(0, 10, 'Fichajes', 0, 1, 'C')
     
     def footer(self):
         self.set_y(-15)
-    #    self.set_font('Arial', 'I', 8)
+        self.set_font('Arial', 'I', 8)
         self.cell(0, 10, 'Pagina %s' % self.page_no(), 0, 0, 'C')
     
-    def chapter_title(self, title):
-    #    self.set_font('Arial', 'B', 12)
-        self.cell(0, 10, title, 0, 1, 'L')
-        self.ln(4)
-    
-    def chapter_body(self, body):
-    #    self.set_font('Arial', '', 12)
-        self.multi_cell(0, 10, body)
-        self.ln()
-        
-    def aniadir_fila(self, nombre, fecha, hora, estado):
-                       
-    #    self.set_font('Arial', '', 12)
-        self.cell(0, 10, f'Nombre: {nombre}', 0, 1)
-        self.cell(0, 10, f'Fecha: {fecha}', 0, 1)
-        self.cell(0, 10, f'Hora: {hora}', 0, 1)
-        self.cell(0, 10, f'Estado: {estado}', 0, 1)
-        self.ln(10)
-
+    def aniadir_fila(self, fecha, hora, estado):
+        self.set_font('Arial', '', 12)
+        self.cell(0, 10, f'Fecha: {fecha}    Hora: {hora}    Estado: {estado}', 0, 1)
+        self.ln(1)
+        self.set_draw_color(0, 0, 0)
+        self.line(10, self.get_y(), 200, self.get_y())
   
     def crear(self, fecha_desde, fecha_hasta, trabajadores):
-                
-        file = 'fichajes_' + fecha_desde.toString("yyyy-MM-dd") + '_' + fecha_hasta.toString("yyyy-MM-dd") + '.pdf'
         
-        pdf = FPDF()
+        file = 'pdfs_fichajes/fichajes_' + fecha_desde.toString("yyyy-MM-dd") + '_' + fecha_hasta.toString("yyyy-MM-dd") + '.pdf'
         
-        pdf.add_page()
-    #    pdf.set_font('Arial', 'B', 16)
-        pdf.header()
-        self.chapter_title('Fichajes')
+        self.add_page()
+        self.set_font('Arial', 'B', 16)
+        self.cell(0, 10, 'Fichajes', 0, 1, 'L')
+        self.ln(4)
           
         self.obtener_fichajes(fecha_desde, fecha_hasta, trabajadores)
         
-        self.footer()
         self.output(file)
 
-    def obtener_fichajes(self, fecha_desde, fecha_hasta, idtrs, pdf):
+    def obtener_fichajes(self, fecha_desde, fecha_hasta, idtrs):
         conexion = Conexion().get_connection()                       
         cursor = conexion.cursor()
                         
-        query_nombre = 'SELECT nombre FROM Reloj WHERE idtr = ? WHERE fecha BETWEEN ? AND ?'
-        query_fecha = 'SELECT fecha FROM Reloj WHERE idtr = ? WHERE fecha BETWEEN ? AND ?'
-        query_hora = 'SELECT hora FROM Reloj WHERE idtr = ? WHERE fecha BETWEEN ? AND ?'
-        query_estado = 'SELECT estado FROM Reloj WHERE idtr = ? WHERE fecha BETWEEN ? AND ?'
-        
-        cursor.execute(query_nombre, (idtr, fecha_desde, fecha_hasta))
-        nombres = cursor.fetchall()
-        
-        cursor.execute(query_fecha, (idtr, fecha_desde, fecha_hasta))
-        fechas = cursor.fetchall()
-        
-        cursor.execute(query_hora, (idtr, fecha_desde, fecha_hasta))
-        horas = cursor.fetchall()
-        
-        cursor.execute(query_estado, (idtr, fecha_desde, fecha_hasta))
-        estados = cursor.fetchall()
+        query = 'SELECT nombre, fecha, hora, estado FROM Reloj WHERE idtr = ? AND fecha BETWEEN ? AND ?'
         
         for idtr in idtrs:
+            cursor.execute(query, (idtr, fecha_desde.toString("ddd MMM dd yyyy"), fecha_hasta.toString("ddd MMM dd yyyy")))
+            fichajes = cursor.fetchall()
+                           
+            queryNombre = 'SELECT nombre FROM Trabajador WHERE idtr = ?'
+            cursor.execute(queryNombre, (idtr,))
+            nombre = cursor.fetchone()[0]
+                        
+            if fichajes:
+                                   
+                self.ln(4)
+                self.set_font('Arial', 'B', 14)
+                self.cell(0, 10, f'Trabajador ID: {idtr}, Nombre: {nombre}', 0, 1)
+                self.ln(4)
+                
+                self.set_draw_color(0, 0, 0)
+                self.line(10, self.get_y(), 200, self.get_y())
+                
+                for fichaje in fichajes:
+                    nombre, fecha, hora, estado = fichaje
+                    self.aniadir_fila(fecha, hora, estado)
+                    
+            else:
+                
+                self.set_font('Arial', 'B', 14)
+                self.cell(0, 10, f'Trabajador ID: {idtr}, Nombre: {nombre}', 0, 1)
+                self.ln(4)
+                self.cell(0, 10, 'No hay fichajes', 0, 1)
+                self.ln(10)
             
-            pdf.anidar_fila(nombres[idtr], fechas[idtr], horas[idtr], estados[idtr])
-            
-        
         cursor.close()
         conexion.close()

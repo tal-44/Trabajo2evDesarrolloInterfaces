@@ -1,7 +1,3 @@
-from DAO import Conexion
-from Log import Log
-from Modelo import Impresion_PDF
-
 """
 from Fichaje import *
 from Trabajador import *
@@ -11,12 +7,18 @@ from datetime import *
 import sqlite3
 from io import *
 import sys
+import os
+
 from PyQt6.QtWidgets import QApplication, QMainWindow, QHeaderView
 from PyQt6.QtCore import QPropertyAnimation, QEasingCurve
 from PyQt6 import QtCore, QtWidgets, QtGui
 from PyQt6.uic import loadUi
 from PyQt6.QtCore import Qt, QTimer, QTime, QDate, pyqtSlot
 import logging
+
+from DAO.Conexion import Conexion
+from Log.Log import Log
+from Modelo.Impresion_PDF import Impresion_PDF
 
 class Main(QMainWindow):
     
@@ -119,7 +121,7 @@ class Main(QMainWindow):
         
         try:            
             
-            conexion = Conexion().get_connection()                       
+            conexion = Conexion().get_connection()
             cursor = conexion.cursor()
                         
             query = 'SELECT Estado FROM Trabajador WHERE idtr = ?'
@@ -276,7 +278,7 @@ class Main(QMainWindow):
         timer.singleShot(10000, self.update_label_panelMensajes)
     
     
-if __name__ == "__main__":    
+if __name__ == "__main__":
     
     app = QApplication(sys.argv)
     ventana = Main()
