@@ -114,3 +114,157 @@
 2025-02-11 18:08:00,393 - ERROR - No se han seleccionado trabajadores
 2025-02-11 18:08:02,248 - ERROR - Error binding parameter 2: type 'QDate' is not supported
 2025-02-11 18:33:34,083 - ERROR - No se han seleccionado trabajadores
+2025-02-13 19:58:26,702 - ERROR - Codigo no introducido
+2025-02-13 19:58:51,437 - ERROR - Codigo no valido
+2025-02-13 19:58:57,275 - ERROR - Codigo no valido
+2025-02-13 20:00:44,591 - ERROR - Codigo no introducido
+2025-02-13 20:00:47,838 - ERROR - Codigo no valido
+2025-02-13 20:00:50,977 - ERROR - Codigo no valido
+2025-02-13 20:00:54,542 - ERROR - Codigo no valido
+2025-02-13 20:00:59,716 - INFO - Fichaje realizado: Codigo=4
+, Nombre=Pedro, Estado=OUT
+2025-02-13 20:01:03,300 - INFO - Fichaje realizado: Codigo=4
+, Nombre=Pedro, Estado=OUT
+2025-02-13 20:01:03,317 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
+2025-02-13 20:01:06,610 - INFO - Fichaje realizado: Codigo=4
+, Nombre=Pedro, Estado=OUT
+2025-02-13 20:01:06,625 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
+2025-02-13 20:01:06,633 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=OUT
+2025-02-13 20:01:11,071 - INFO - Fichaje rechazado: Codigo=4
+, Nombre=Pedro
+2025-02-13 20:01:11,076 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-13 20:01:11,077 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-13 20:01:11,078 - INFO - Fichaje rechazado: Codigo=5, Nombre=Lope
+2025-02-13 20:01:16,048 - INFO - Fichaje rechazado: Codigo=4
+, Nombre=Pedro
+2025-02-13 20:01:16,052 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-13 20:01:16,053 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-13 20:01:16,054 - INFO - Fichaje rechazado: Codigo=5, Nombre=Lope
+2025-02-13 20:01:16,055 - INFO - Fichaje rechazado: Codigo=5, Nombre=Lope
+2025-02-13 20:01:20,392 - INFO - Fichaje rechazado: Codigo=4
+, Nombre=Pedro
+2025-02-13 20:01:20,396 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-13 20:01:20,397 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-13 20:01:20,398 - INFO - Fichaje rechazado: Codigo=5, Nombre=Lope
+2025-02-13 20:01:20,399 - INFO - Fichaje rechazado: Codigo=5, Nombre=Lope
+2025-02-13 20:01:20,400 - INFO - Fichaje rechazado: Codigo=5, Nombre=Lope
+2025-02-13 20:01:25,098 - INFO - Fichaje realizado: Codigo=4
+, Nombre=Pedro, Estado=OUT
+2025-02-13 20:01:25,113 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
+2025-02-13 20:01:25,122 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=OUT
+2025-02-13 20:01:25,131 - INFO - Fichaje realizado: Codigo=5, Nombre=Lope, Estado=IN
+2025-02-13 20:01:25,140 - INFO - Fichaje realizado: Codigo=5, Nombre=Lope, Estado=OUT
+2025-02-13 20:01:25,150 - INFO - Fichaje realizado: Codigo=5, Nombre=Lope, Estado=IN
+2025-02-13 20:01:25,159 - INFO - Fichaje realizado: Codigo=5, Nombre=Lope, Estado=OUT
+2025-02-13 20:02:26,083 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-13 20:02:29,194 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
+2025-02-13 20:02:29,207 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=OUT
+2025-02-13 20:02:55,604 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
+2025-02-13 20:03:11,380 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-13 20:03:11,382 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-13 20:03:26,854 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
+2025-02-13 20:03:26,867 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=OUT
+2025-02-13 20:03:26,876 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
+2025-02-13 20:03:33,237 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
+2025-02-13 20:03:33,250 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=OUT
+2025-02-13 20:03:33,258 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
+2025-02-13 20:03:33,267 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=OUT
+2025-02-13 20:07:12,512 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
+2025-02-13 20:07:18,268 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
+2025-02-13 20:07:18,285 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=OUT
+2025-02-13 20:07:35,353 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
+2025-02-13 20:07:35,365 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=OUT
+2025-02-13 20:07:35,375 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
+2025-02-13 20:07:42,403 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-13 20:07:42,405 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-13 20:07:42,406 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-13 20:07:42,407 - INFO - Fichaje rechazado: Codigo=5, Nombre=Lope
+2025-02-13 20:08:57,879 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=OUT
+2025-02-13 20:09:00,602 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=OUT
+2025-02-13 20:09:00,617 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
+2025-02-13 20:09:04,148 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=OUT
+2025-02-13 20:09:04,159 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
+2025-02-13 20:09:04,167 - INFO - Fichaje realizado: Codigo=5, Nombre=Lope, Estado=IN
+2025-02-13 20:13:16,130 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-13 20:13:19,709 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-13 20:13:19,715 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-13 20:13:34,823 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-13 20:13:34,825 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-13 20:13:34,826 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-13 20:14:45,696 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-13 20:14:50,731 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=OUT
+2025-02-13 20:14:58,043 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-13 20:15:02,155 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-13 20:15:07,218 - INFO - Fichaje rechazado: Codigo=5, Nombre=Lope
+2025-02-13 20:15:12,064 - INFO - Fichaje realizado: Codigo=6, Nombre=Rui, Estado=IN
+2025-02-13 20:15:20,198 - INFO - Fichaje realizado: Codigo=6, Nombre=Rui, Estado=OUT
+2025-02-13 20:15:27,931 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-13 20:15:31,652 - ERROR - Codigo no valido
+2025-02-13 20:15:38,882 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-13 20:15:41,590 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-13 20:15:48,159 - INFO - Fichaje rechazado: Codigo=5, Nombre=Lope
+2025-02-13 20:15:52,786 - INFO - Fichaje rechazado: Codigo=6, Nombre=Rui
+2025-02-13 20:15:55,856 - ERROR - Codigo no valido
+2025-02-13 20:15:59,763 - ERROR - Codigo no introducido
+2025-02-13 20:16:01,793 - ERROR - Codigo no valido
+2025-02-13 20:16:07,529 - ERROR - Codigo no valido
+2025-02-13 20:16:11,474 - ERROR - Codigo no valido
+2025-02-13 20:39:47,911 - ERROR - No se han seleccionado trabajadores
+2025-02-13 20:39:50,949 - ERROR - Fecha desde no valida
+2025-02-13 20:40:15,358 - ERROR - No se han seleccionado trabajadores
+2025-02-13 20:43:40,407 - ERROR - No se han seleccionado trabajadores
+2025-02-13 20:46:10,644 - ERROR - No se han seleccionado trabajadores
+2025-02-13 20:47:21,884 - ERROR - No se han seleccionado trabajadores
+2025-02-13 20:47:23,969 - ERROR - No se han seleccionado trabajadores
+2025-02-13 20:51:05,768 - ERROR - database is locked
+2025-02-13 20:51:23,940 - ERROR - database is locked
+2025-02-13 21:01:21,800 - ERROR - database is locked
+2025-02-13 21:01:31,546 - ERROR - database is locked
+2025-02-13 21:02:02,852 - INFO - Fichaje rechazado: Codigo=4, Nombre=Pedro
+2025-02-13 21:02:11,989 - ERROR - database is locked
+2025-02-13 21:03:14,714 - ERROR - database is locked
+2025-02-13 21:04:44,135 - ERROR - database is locked
+2025-02-13 21:06:08,750 - INFO - Fichaje realizado: Codigo=4, Nombre=Pedro, Estado=IN
+2025-02-13 21:08:06,923 - ERROR - database is locked
+2025-02-20 20:45:49,747 - INFO - Fichaje realizado: Codigo=2, Nombre=Rodrigo, Estado=OUT
+2025-02-20 20:46:18,021 - INFO - Fichaje realizado: Codigo=2, Nombre=Rodrigo, Estado=IN
+2025-02-20 20:50:36,557 - ERROR - No se han seleccionado trabajadores
+2025-02-20 21:09:24,471 - ERROR - Codigo no valido
+2025-02-20 21:11:02,893 - INFO - Fichaje realizado: Codigo=2, Nombre=Rodrigo, Estado=IN
+2025-02-20 21:11:07,946 - INFO - Fichaje realizado: Codigo=2, Nombre=Rodrigo, Estado=IN
+2025-02-20 21:11:10,970 - INFO - Fichaje realizado: Codigo=2, Nombre=Rodrigo, Estado=IN
+2025-02-20 21:11:13,639 - INFO - Fichaje rechazado: Codigo=2, Nombre=Rodrigo
+2025-02-20 21:11:16,653 - INFO - Fichaje realizado: Codigo=2, Nombre=Rodrigo, Estado=IN
+2025-02-20 21:12:17,122 - INFO - Fichaje realizado: Codigo=2, Nombre=Rodrigo, Estado=IN
+2025-02-20 21:12:19,975 - INFO - Fichaje realizado: Codigo=2, Nombre=Rodrigo, Estado=IN
+2025-02-20 21:13:45,123 - INFO - Fichaje realizado: Codigo=2, Nombre=Rodrigo, Estado=IN
+2025-02-20 21:13:48,378 - INFO - Fichaje realizado: Codigo=2, Nombre=Rodrigo, Estado=IN
+2025-02-20 21:14:32,361 - INFO - Fichaje realizado: Codigo=2, Nombre=Rodrigo, Estado=IN
+2025-02-20 21:14:45,174 - INFO - Fichaje realizado: Codigo=2, Nombre=Rodrigo, Estado=IN
+2025-02-20 21:14:48,312 - INFO - Fichaje realizado: Codigo=2, Nombre=Rodrigo, Estado=IN
+2025-02-20 21:15:02,509 - INFO - Fichaje realizado: Codigo=2, Nombre=Rodrigo, Estado=IN
+2025-02-25 19:53:13,709 - ERROR - Código no válido
+2025-02-25 19:53:17,819 - INFO - Fichaje realizado: Codigo=1, Nombre=Gonzalo, Estado=OUT
+2025-02-25 19:53:21,288 - INFO - Fichaje realizado: Codigo=1, Nombre=Gonzalo, Estado=IN
+2025-02-25 19:53:25,693 - ERROR - Código no válido
+2025-02-25 19:53:27,697 - ERROR - Código no válido
+2025-02-25 19:53:28,819 - ERROR - Código no introducido
+2025-02-25 19:55:59,373 - ERROR - Código no válido
+2025-02-25 19:56:00,608 - ERROR - Código no introducido
+2025-02-25 19:56:03,442 - INFO - Fichaje realizado: Codigo=5, Nombre=Lope, Estado=OUT
+2025-02-25 19:56:05,852 - INFO - Fichaje realizado: Codigo=5, Nombre=Lope, Estado=IN
+2025-02-25 19:56:07,950 - INFO - Fichaje rechazado: Codigo=5, Nombre=Lope
+2025-02-25 19:56:10,650 - INFO - Fichaje realizado: Codigo=5, Nombre=Lope, Estado=OUT
+2025-02-25 19:56:12,710 - INFO - Fichaje rechazado: Codigo=5, Nombre=Lope
+2025-02-25 19:56:14,506 - INFO - Fichaje realizado: Codigo=5, Nombre=Lope, Estado=IN
+2025-02-25 20:01:45,241 - ERROR - Las fechas no son coherentes
+2025-02-25 20:04:19,838 - ERROR - Código no introducido
+2025-02-25 20:04:21,679 - ERROR - Código no introducido
+2025-02-25 20:04:23,427 - ERROR - Código no válido
+2025-02-25 20:04:25,395 - ERROR - Código no válido
+2025-02-25 20:04:29,298 - INFO - Fichaje realizado: Codigo=2, Nombre=Rodrigo, Estado=OUT
+2025-02-25 20:04:31,627 - INFO - Fichaje realizado: Codigo=2, Nombre=Rodrigo, Estado=IN
+2025-02-25 20:04:34,339 - INFO - Fichaje rechazado: Codigo=2, Nombre=Rodrigo
+2025-02-25 20:04:36,763 - INFO - Fichaje realizado: Codigo=2, Nombre=Rodrigo, Estado=OUT
+2025-02-25 20:04:38,387 - INFO - Fichaje rechazado: Codigo=2, Nombre=Rodrigo
+2025-02-25 20:04:40,281 - INFO - Fichaje realizado: Codigo=2, Nombre=Rodrigo, Estado=IN
