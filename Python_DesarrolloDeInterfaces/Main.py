@@ -49,16 +49,68 @@ class Main(QMainWindow):
     def verificar_hora(self):
         
         ahora = datetime.now().time()
-        if ahora.hour == 0 and ahora.minute == 0:  # Medianoche
+        if ahora.hour == 0 and ahora.minute == 0:
+            trabajadores_in = self.verificar_fichajes_no_cerrados()
+        
+        if trabajadores_in:
+            mensaje = "Fichajes realizados a las 12 de la noche.\n"
+            mensaje += "Los siguientes trabajadores no cerraron su fichaje:\n"
+            for idtr, nombre in trabajadores_in:
+                mensaje += f"- {nombre} (ID: {idtr})\n"
+        else:
+            mensaje = "Fichajes realizados a las 12 de la noche.\n"
+            mensaje += "Todos los trabajadores han cerrado su fichaje correctamente."
+            
             self.enviar_correo_aviso("Fichajes realizados a las 12 de la noche.")
+            
+    def verificar_fichajes_no_cerrados(self):
+   
+    
+        try:
+            conexion = Conexion().get_connection()
+            cursor = conexion.cursor()
+
+            # Consulta para buscar trabajadores con estado 'IN'
+            cursor.execute('SELECT idtr, Nombre FROM Trabajador WHERE Estado = ?', ('IN',))
+            trabajadores_in = cursor.fetchall()
+
+            cursor.close()
+            
+            for idtr, nombre in trabajadores_in:
+                Log.log_error(f"El trabajador {nombre} (ID: {idtr}) no cerró su fichaje")
+                
+                cursor.execute('INSERT INTO Reloj (idtr, Nombre, Fecha, Hora, estado) VALUES (?, ?, ?, ?, ?)', (idtr, nombre, QDate.currentDate().toString("yyyy-MM-dd"), QTime.currentTime().toString("HH:mm:ss"), 'OUT'))
+                cursor.execute('UPDATE Trabajador SET Estado = ? WHERE idtr = ?', ('OUT', idtr))
+                Log.log_fichaje(idtr, 'OUT', nombre)
+                            
+            return trabajadores_in  # Devuelve una lista de tuplas (idtr, nombre)
+        except sqlite3.Error as e:
+            Log.log_error(f"Error al verificar fichajes no cerrados: {e}")
+            return []  # Devuelve una lista vacía en caso de error
+        finally:
+            Conexion().close_connection(conexion)
 
     def enviar_correo_aviso(self, mensaje):        
         enviarEmailAviso(self, mensaje)
 
     def closeEvent(self, event):
-        """ Sobreescribe el evento de cieere"""
-        self.enviar_correo_aviso("La aplicación se está cerrando.")  # Enviar correo antes de cerrar
-        event.accept()  # Aceptar el evento de cierre
+         # Verificar si hay trabajadores con estado 'IN'
+        trabajadores_in = self.verificar_fichajes_no_cerrados()
+    
+        if trabajadores_in:
+            mensaje = "La aplicación se está cerrando.\n"
+            mensaje += "Los siguientes trabajadores no cerraron su fichaje:\n"
+            for idtr, nombre in trabajadores_in:
+                mensaje += f"- {nombre} (ID: {idtr})\n"
+        else:
+            mensaje = "La aplicación se está cerrando.\n"
+            mensaje += "Todos los trabajadores han cerrado su fichaje correctamente."
+
+        # Enviar correo con el mensaje
+        self.enviar_correo_aviso(mensaje)
+
+        # Aceptar el evento de cierre
+        event.accept()
 
     def mostrarInfo(self, mensaje):
         """Muestra un mensaje en el panel de mensajes."""
